@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<!--
+  ─────────────────────────────────────────────────────────────
+  Metafusion (元融) — Brand Website
+  Design System: Metafusion Design System v1.0 (DESIGN.md)
+  Built by: 原型构建师 · 筑原型 (Zhu)
+  Date: 2025-07-18
+  ─────────────────────────────────────────────────────────────
+-->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metafusion — 元融 · Fusing Elements, Creating Intelligence</title>
+<meta name="description" content="Metafusion (元融) — Enterprise management consulting, AI transformation, and AI GC product development. Fusing elements to create new intelligence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════════
+   1. DESIGN TOKENS (CSS Custom Properties)
+   ════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Colors ── */
+  --color-primary: #D4A853;
+  --color-primary-hover: #E0B96E;
+  --color-primary-active: #C49A44;
+  --color-primary-subtle: rgba(212, 168, 83, 0.2);
+  --color-primary-glow: rgba(212, 168, 83, 0.1);
+  --color-accent: #5BC0DE;
+  --color-accent-hover: #7ECDE6;
+  --color-accent-subtle: rgba(91, 192, 222, 0.2);
+  --color-bg-deep: #0A0A0B;
+  --color-bg: #111113;
+  --color-bg-elevated: #1A1A1E;
+  --color-bg-hover: #222226;
+  --color-text-primary: #F0EDE8;
+  --color-text-secondary: #A8A39A;
+  --color-text-tertiary: #6B6761;
+  --color-text-on-primary: #0A0A0B;
+  --color-border: #2A2825;
+  --color-border-light: #1E1D1A;
+  --color-border-hover: #3A3733;
+  --color-border-primary: rgba(212, 168, 83, 0.4);
+
+  /* ── Typography ── */
+  --font-heading: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* ── Font size (desktop base) ── */
+  --fs-display: 64px;
+  --fs-display-zh: 56px;
+  --fs-h1: 44px;
+  --fs-h1-zh: 40px;
+  --fs-h2: 32px;
+  --fs-h2-zh: 30px;
+  --fs-h3: 24px;
+  --fs-h4: 20px;
+  --fs-body-xl: 18px;
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+  --fs-btn: 15px;
+
+  /* ── Font weight ── */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Line height ── */
+  --lh-display: 1.05;
+  --lh-display-zh: 1.1;
+  --lh-h1: 1.1;
+  --lh-h1-zh: 1.15;
+  --lh-h2: 1.2;
+  --lh-h2-zh: 1.25;
+  --lh-h3: 1.3;
+  --lh-h4: 1.35;
+  --lh-body: 1.6;
+  --lh-body-zh: 1.75;
+  --lh-small: 1.5;
+
+  /* ── Letter spacing ── */
+  --ls-display: -0.02em;
+  --ls-h1: -0.015em;
+  --ls-h2: -0.01em;
+  --ls-h3: -0.005em;
+  --ls-btn: 0.02em;
+  --ls-body-zh: 0.01em;
+
+  /* ── Spacing (4px baseline) ── */
+  --space-unit: 4px;
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* ── Container widths ── */
+  --container-sm: 640px;
+  --container-md: 860px;
+  --container-lg: 1100px;
+  --container-xl: 1280px;
+
+  /* ── Elevation & Glow ── */
+  --elevation-flat: none;
+  --elevation-raised: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --elevation-floating: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --elevation-glow: 0 0 24px rgba(212, 168, 83, 0.15);
+  --elevation-glow-intense: 0 0 40px rgba(212, 168, 83, 0.25);
+
+  /* ── Glassmorphism ── */
+  --glass-bg: rgba(26, 26, 30, 0.75);
+  --glass-border: rgba(212, 168, 83, 0.10);
+  --backdrop-blur: blur(12px) saturate(1.2);
+  --backdrop-blur-heavy: blur(24px) saturate(1.4);
+
+  /* ── Overlays ── */
+  --overlay-subtle: rgba(10, 10, 11, 0.6);
+  --overlay-medium: rgba(10, 10, 11, 0.8);
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* ── Transitions ── */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+
+  /* ── Layout ── */
+  --nav-height: 64px;
+  --nav-height-mobile: 56px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   2. RESPONSIVE TOKENS
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  :root {
+    --fs-display: 36px;
+    --fs-display-zh: 32px;
+    --fs-h1: 28px;
+    --fs-h1-zh: 26px;
+    --fs-h2: 22px;
+    --fs-h2-zh: 22px;
+    --fs-h3: 20px;
+    --fs-body: 15px;
+    --nav-height: 56px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --fs-display: 48px;
+    --fs-display-zh: 42px;
+    --fs-h1: 36px;
+    --fs-h1-zh: 34px;
+    --fs-h2: 28px;
+    --fs-h2-zh: 26px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   3. RESET & BASE
+   ════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-border-hover); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--color-primary-subtle);
+  color: var(--color-text-primary);
+}
+
+/* ── Images ── */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Links ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Lists ── */
+ul { list-style: none; }
+
+/* ════════════════════════════════════════════════════════════
+   4. UTILITY
+   ════════════════════════════════════════════════════════════ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--sm {
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section {
+  padding: var(--space-4xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+}
+
+/* ── Section label / subtitle ── */
+.section-label {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Section header ── */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+@media (max-width: 640px) {
+  .section-header {
+    margin-bottom: var(--space-2xl);
+    text-align: left;
+  }
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+}
+.section-title.zh {
+  font-size: var(--fs-h1-zh);
+  font-weight: var(--weight-bold);
+  line-height: var(--lh-h1-zh);
+  letter-spacing: 0;
+}
+
+.section-subtitle {
+  font-size: var(--fs-body-xl);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .section-subtitle {
+    margin: 0;
+  }
+}
+
+/* ── Fusion Divider ── */
+.fusion-divider {
+  width: 80px;
+  height: 2px;
+  margin: var(--space-lg) auto;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    transparent 50%,
+    var(--color-accent) 100%
+  );
+  border-radius: 1px;
+}
+@media (max-width: 640px) {
+  .fusion-divider {
+    margin: var(--space-lg) 0;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   5. NAVIGATION
+   ════════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 200;
+  background: rgba(17, 17, 19, 0.85);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background var(--duration-normal) var(--ease-smooth);
+}
+
+.nav.scrolled {
+  background: rgba(17, 17, 19, 0.95);
+  border-bottom-color: var(--color-border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ── Logo ── */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+  font-size: var(--fs-h4);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+  z-index: 210;
+}
+
+.nav__logo-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.nav__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.nav__logo-main {
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+.nav__logo-sub {
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+/* ── Nav Links ── */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-smooth),
+              background var(--duration-fast) var(--ease-smooth);
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-text-primary);
+  background: var(--color-bg-hover);
+}
+
+.nav__link.active {
+  color: var(--color-primary);
+}
+
+/* ── Language Switcher ── */
+.nav__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin-left: var(--space-md);
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  min-height: 44px;
+}
+
+.nav__lang-btn {
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  font-family: var(--font-body);
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  min-height: 32px;
+  letter-spacing: 0.02em;
+}
+
+.nav__lang-btn:hover {
+  color: var(--color-text-secondary);
+  background: var(--color-bg-hover);
+}
+
+.nav__lang-btn.active {
+  color: var(--color-text-primary);
+  background: var(--color-bg-elevated);
+}
+
+.nav__lang-sep {
+  color: var(--color-border);
+  font-size: 13px;
+  padding: 0 2px;
+  user-select: none;
+}
+
+/* ── Hamburger ── */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  z-index: 210;
+  gap: 5px;
+  padding: 10px;
+  transition: border-color var(--duration-fast) var(--ease-smooth);
+}
+
+.nav__hamburger:hover {
+  border-color: var(--color-border-hover);
+}
+
+.nav__hamburger-bar {
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 1px;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  transform-origin: center;
+}
+
+.nav__hamburger.open .nav__hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__hamburger.open .nav__hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav__hamburger.open .nav__hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile Nav ── */
+.nav__mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 11, 0.95);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  z-index: 205;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+  pointer-events: none;
+}
+
+.nav__mobile.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav__mobile-link {
+  font-size: var(--fs-h3);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-heading);
+  color: var(--color-text-secondary);
+  padding: var(--space-sm) var(--space-lg);
+  transition: color var(--duration-fast) var(--ease-smooth);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__mobile-link:hover,
+.nav__mobile-link.active {
+  color: var(--color-primary);
+}
+
+.nav__mobile-lang {
+  margin-top: var(--space-lg);
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.nav__mobile-lang-btn {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: var(--weight-medium);
+  font-family: var(--font-body);
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-smooth);
+  min-height: 44px;
+}
+.nav__mobile-lang-btn:hover {
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-hover);
+}
+.nav__mobile-lang-btn.active {
+  color: var(--color-primary);
+  border-color: var(--color-border-primary);
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+  .nav__mobile { display: flex; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   6. HERO SECTION
+   ════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+  background: var(--color-bg);
+}
+
+/* ── Fusion Background Layers ── */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* Layer 1: Dot grid texture */
+    radial-gradient(rgba(212, 168, 83, 0.06) 1px, transparent 1px) 0 0 / 32px 32px,
+    /* Layer 2: Warm amber orb (top-left) */
+    radial-gradient(50% 50% at 20% 25%, rgba(212, 168, 83, 0.15) 0%, rgba(212, 168, 83, 0.05) 40%, transparent 70%),
+    /* Layer 3: Cool cyan orb (bottom-right) */
+    radial-gradient(50% 50% at 80% 75%, rgba(91, 192, 222, 0.10) 0%, rgba(91, 192, 222, 0.03) 40%, transparent 70%);
+}
+
+/* ── Fusion Gradient Bridge (bottom strip) ── */
+.hero__bridge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 168, 83, 0.6) 0%,
+    rgba(212, 168, 83, 0) 35%,
+    rgba(91, 192, 222, 0) 65%,
+    rgba(91, 192, 222, 0.6) 100%
+  );
+  opacity: 0.8;
+}
+
+/* ── Floating glow orbs (animated) ── */
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  opacity: 0.3;
+}
+
+.hero__orb--warm {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
+  animation: orbFloatWarm 8s ease-in-out infinite alternate;
+}
+
+.hero__orb--cool {
+  width: 350px;
+  height: 350px;
+  bottom: -80px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(91, 192, 222, 0.08) 0%, transparent 70%);
+  animation: orbFloatCool 10s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloatWarm {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 30px) scale(1.1); }
+}
+@keyframes orbFloatCool {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, -20px) scale(1.08); }
+}
+
+/* ── Hero Content ── */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-lg) var(--space-5xl);
+  width: 100%;
+}
+
+.hero__tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  border-radius: 100px;
+  background: rgba(212, 168, 83, 0.06);
+}
+
+.hero__tagline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  max-width: 800px;
+}
+.hero__title.zh {
+  font-size: var(--fs-display-zh);
+  line-height: var(--lh-display-zh);
+  letter-spacing: 0;
+}
+
+.hero__title-em {
+  color: var(--color-primary);
+}
+
+.hero__subtitle {
+  font-size: var(--fs-body-xl);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  max-width: 540px;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 28px;
+  font-size: var(--fs-btn);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--ls-btn);
+  font-family: var(--font-body);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  min-height: 48px;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border: none;
+}
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  box-shadow: var(--elevation-glow);
+}
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+.btn--secondary:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-border-hover);
+}
+.btn--secondary:active {
+  background: var(--color-bg-elevated);
+}
+
+/* ── Hero scroll indicator ── */
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-tertiary);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease var(--duration-slow) both;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--color-text-tertiary), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 0.5; }
+  51% { transform: scaleY(1); transform-origin: bottom; opacity: 0.5; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Hero Responsive */
+@media (max-width: 640px) {
+  .hero { min-height: 90vh; }
+  .hero__content { padding: var(--space-3xl) var(--space-lg) var(--space-3xl); }
+  .hero__subtitle { font-size: var(--fs-body); }
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+  .hero__scroll { display: none; }
+  .hero__orb--warm { width: 250px; height: 250px; top: -50px; left: -80px; opacity: 0.2; }
+  .hero__orb--cool { width: 200px; height: 200px; bottom: -50px; right: -60px; opacity: 0.15; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero__orb--warm { width: 300px; height: 300px; }
+  .hero__orb--cool { width: 280px; height: 280px; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   7. ABOUT SECTION
+   ════════════════════════════════════════════════════════════ */
+.about {
+  background: var(--color-bg-deep);
+  position: relative;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.about__text p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+.about__text p.zh {
+  line-height: var(--lh-body-zh);
+  letter-spacing: var(--ls-body-zh);
+}
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Company Info Cards ── */
+.about__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.info-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.info-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--elevation-raised);
+}
+
+.info-card__label {
+  font-size: var(--fs-micro);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.info-card__value {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--lh-small);
+}
+.info-card__value.zh {
+  line-height: var(--lh-body-zh);
+}
+
+/* About Responsive */
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   8. PRODUCTS SECTION
+   ════════════════════════════════════════════════════════════ */
+.products {
+  background: var(--color-bg);
+  position: relative;
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.product-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary-subtle),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 168, 83, 0.08);
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.12);
+}
+
+.product-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.product-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.product-card__desc {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-secondary);
+}
+.product-card__desc.zh {
+  line-height: var(--lh-body-zh);
+  letter-spacing: var(--ls-body-zh);
+}
+
+/* Products Responsive */
+@media (max-width: 768px) {
+  .products__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   9. CONTACT SECTION
+   ════════════════════════════════════════════════════════════ */
+.contact {
+  background: var(--color-bg-deep);
+  position: relative;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact__item {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.contact__item-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(212, 168, 83, 0.06);
+  border: 1px solid rgba(212, 168, 83, 0.10);
+}
+
+.contact__item-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contact__item-label {
+  font-size: var(--fs-micro);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xxs);
+}
+
+.contact__item-value {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--color-text-primary);
+}
+.contact__item-value.zh {
+  line-height: var(--lh-body-zh);
+  letter-spacing: var(--ls-body-zh);
+}
+
+/* ── Business Registration Summary ── */
+.contact__business {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.contact__business-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.02em;
+}
+
+.contact__business-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
+  gap: var(--space-md);
+}
+
+.contact__business-row:last-child {
+  border-bottom: none;
+}
+
+.contact__business-label {
+  font-size: var(--fs-micro);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.contact__business-value {
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+  text-align: right;
+  word-break: break-all;
+}
+
+/* Contact Responsive */
+@media (max-width: 768px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  .contact__business-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xxs);
+  }
+  .contact__business-value {
+    text-align: left;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   10. FOOTER
+   ════════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--color-bg-deep);
+  border-top: 1px solid var(--color-border-light);
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footer__inner {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer__brand-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.footer__brand-sub {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+}
+
+.footer__divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-border) 50%,
+    transparent 100%
+  );
+  margin-bottom: var(--space-lg);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.footer__copyright {
+  font-size: var(--fs-micro);
+  color: var(--color-text-tertiary);
+  line-height: 1.6;
+}
+
+.footer__credit {
+  font-size: var(--fs-micro);
+  color: var(--color-text-tertiary);
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.footer__credit-sep {
+  color: var(--color-border);
+}
+
+/* Footer Responsive */
+@media (max-width: 640px) {
+  .footer__top { flex-direction: column; gap: var(--space-md); }
+  .footer__bottom { flex-direction: column; text-align: center; }
+  .footer__credit { justify-content: center; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   11. SCROLL ANIMATIONS (Intersection Observer)
+   ════════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-smooth),
+              transform var(--duration-slow) var(--ease-smooth);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* ════════════════════════════════════════════════════════════
+   12. KEYFRAMES
+   ════════════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero entrance animations ── */
+.hero__tagline { animation: fadeIn 0.6s var(--ease-smooth) 0.2s both; }
+.hero__title { animation: fadeInUp 0.8s var(--ease-smooth) 0.3s both; }
+.hero__subtitle { animation: fadeInUp 0.8s var(--ease-smooth) 0.45s both; }
+.hero__actions { animation: fadeInUp 0.8s var(--ease-smooth) 0.6s both; }
+
+/* ════════════════════════════════════════════════════════════
+   13. PRINT STYLES
+   ════════════════════════════════════════════════════════════ */
+@media print {
+  .nav { position: relative; backdrop-filter: none; }
+  .hero { min-height: auto; }
+  .hero__bg, .hero__orb, .hero__bridge, .hero__scroll { display: none; }
+  .btn { border: 1px solid #000; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════════════════════════════════════════════════════
+     NAVIGATION
+     ═════════════════════════════════════════════════════════ -->
+<header class="nav" id="nav" role="banner">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo" aria-label="Metafusion 元融">
+      <!-- Logo Mark: two overlapping rings symbolizing element fusion -->
+      <svg class="nav__logo-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="14" cy="14" r="10" stroke="#D4A853" stroke-width="1.8" fill="none" opacity="0.7"/>
+        <circle cx="14" cy="14" r="6" stroke="#5BC0DE" stroke-width="1.4" fill="none" opacity="0.6"/>
+        <circle cx="14" cy="14" r="3" fill="#D4A853" opacity="0.9"/>
+      </svg>
+      <span class="nav__logo-text">
+        <span class="nav__logo-main">Metafusion</span>
+        <span class="nav__logo-sub" data-lang="zh">元 融</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="#hero" class="nav__link active" data-key="nav_home">Home</a>
+      <a href="#about" class="nav__link" data-key="nav_about">About</a>
+      <a href="#products" class="nav__link" data-key="nav_products">Products</a>
+      <a href="#contact" class="nav__link" data-key="nav_contact">Contact</a>
+
+      <div class="nav__lang" role="group" aria-label="Language switcher">
+        <button class="nav__lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+        <span class="nav__lang-sep" aria-hidden="true">|</span>
+        <button class="nav__lang-btn" data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+    </nav>
+
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ── Mobile Nav Overlay ── -->
+<div class="nav__mobile" id="mobileNav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <a href="#hero" class="nav__mobile-link active" data-key="nav_home">Home</a>
+  <a href="#about" class="nav__mobile-link" data-key="nav_about">About</a>
+  <a href="#products" class="nav__mobile-link" data-key="nav_products">Products</a>
+  <a href="#contact" class="nav__mobile-link" data-key="nav_contact">Contact</a>
+  <div class="nav__mobile-lang">
+    <button class="nav__mobile-lang-btn active" data-lang="en">EN</button>
+    <button class="nav__mobile-lang-btn" data-lang="zh">中文</button>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ═════════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--warm" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--cool" aria-hidden="true"></div>
+    <div class="hero__bridge" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="hero__tagline">
+        <span class="hero__tagline-dot" aria-hidden="true"></span>
+        <span data-key="hero_tagline">Element Fusion</span>
+      </div>
+
+      <h1 class="hero__title" data-key="hero_title">
+        Fusing Elements,<br>
+        <span class="hero__title-em">Creating Intelligence</span>
+      </h1>
+      <h1 class="hero__title zh" data-key="hero_title_zh" lang="zh" style="display:none;">
+        融合元素，<br>
+        <span class="hero__title-em">创造智能</span>
+      </h1>
+
+      <p class="hero__subtitle" data-key="hero_subtitle">
+        Metafusion bridges enterprise management consulting with AI transformation,
+        fusing foundational elements into new business intelligence.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#about" class="btn btn--primary" data-key="hero_cta_primary">Explore Our Vision</a>
+        <a href="#contact" class="btn btn--secondary" data-key="hero_cta_secondary">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span data-key="scroll_label">Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════ ABOUT ════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-key="about_label">About</span>
+        <h2 class="section-title" data-key="about_title">About Metafusion</h2>
+        <h2 class="section-title zh" data-key="about_title_zh" lang="zh" style="display:none;">关于元融</h2>
+        <div class="fusion-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p data-key="about_p1">
+            Metafusion (Shenzhen) Enterprise Management Co., Ltd. is a management consulting firm
+            undergoing a comprehensive AI transformation. We have developed our own AI GC product line,
+            dedicated to fusing fundamental business elements with artificial intelligence to create
+            new forms of enterprise intelligence.
+          </p>
+          <p data-key="about_p2">
+            Our name embodies the philosophy that when foundational elements come together through
+            innovative fusion, they give rise to something greater — new intelligence, new wisdom,
+            and new possibilities for the businesses we serve.
+          </p>
+          <p class="zh" data-key="about_p1_zh" lang="zh" style="display:none;">
+            元融（深圳）企业管理有限公司是一家正在全面推进 AI 转型的管理咨询企业。
+            公司已自主开发 AI GC 产品线，致力于将基础商业元素与人工智能相融合，
+            创造全新的企业智能形态。
+          </p>
+          <p class="zh" data-key="about_p2_zh" lang="zh" style="display:none;">
+            元融之名蕴含了这样一种理念：当基础元素通过创新融合汇聚在一起，
+            便能创造出更伟大的事物——为我们服务的企业带来新智能、新智慧和新可能。
+          </p>
+        </div>
+
+        <div class="about__info">
+          <div class="info-card reveal reveal-delay-1">
+            <div class="info-card__label" data-key="info_legal_label">Legal Name</div>
+            <div class="info-card__value" data-key="info_legal_value">
+              元融（深圳）企业管理有限公司
+            </div>
+          </div>
+          <div class="info-card reveal reveal-delay-2">
+            <div class="info-card__label" data-key="info_credit_label">Credit Code</div>
+            <div class="info-card__value">
+              91440300MAE8D3RJ6A
+            </div>
+          </div>
+          <div class="info-card reveal reveal-delay-3">
+            <div class="info-card__label" data-key="info_established_label">Established</div>
+            <div class="info-card__value">
+              2025-01-10
+            </div>
+          </div>
+          <div class="info-card reveal reveal-delay-4">
+            <div class="info-card__label" data-key="info_legal_rep_label">Legal Representative</div>
+            <div class="info-card__value" data-key="info_legal_rep_value">
+              吴毅海
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ PRODUCTS ════════ -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-key="products_label">Services</span>
+        <h2 class="section-title" data-key="products_title">Products &amp; Services</h2>
+        <h2 class="section-title zh" data-key="products_title_zh" lang="zh" style="display:none;">产品与服务</h2>
+        <div class="fusion-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="products__grid">
+        <!-- Card 1: Management Consulting -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 20h18M5 16l4-8 4 6 4-10 4 12" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="product-card__title" data-key="product_1_title">Management Consulting</h3>
+          <h3 class="product-card__title zh" data-key="product_1_title_zh" lang="zh" style="display:none;">企业管理咨询</h3>
+          <p class="product-card__desc" data-key="product_1_desc">
+            Professional enterprise management consulting services drawing on deep industry expertise
+            and structured methodologies to drive organizational excellence.
+          </p>
+          <p class="product-card__desc zh" data-key="product_1_desc_zh" lang="zh" style="display:none;">
+            基于深厚的行业专业知识和结构化的方法论，提供专业的企业管理咨询服务，推动组织卓越运营。
+          </p>
+        </div>
+
+        <!-- Card 2: AI Transformation -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" stroke="#5BC0DE" stroke-width="1.5"/>
+              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="#5BC0DE" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="product-card__title" data-key="product_2_title">AI Transformation</h3>
+          <h3 class="product-card__title zh" data-key="product_2_title_zh" lang="zh" style="display:none;">AI 转型方案</h3>
+          <p class="product-card__desc" data-key="product_2_desc">
+            Comprehensive AI transformation strategies and implementation services that help
+            organizations integrate artificial intelligence into their core operations.
+          </p>
+          <p class="product-card__desc zh" data-key="product_2_desc_zh" lang="zh" style="display:none;">
+            全面的 AI 转型战略与实施服务，帮助组织将人工智能整合到核心运营中，实现业务升级。
+          </p>
+        </div>
+
+        <!-- Card 3: AI GC Products -->
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 14.66V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2h5.34" stroke="#D4A853" stroke-width="1.5" stroke-linecap="round"/>
+              <polygon points="18 2 22 6 12 16 8 16 8 12 18 2" stroke="#D4A853" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="product-card__title" data-key="product_3_title">AI GC Products</h3>
+          <h3 class="product-card__title zh" data-key="product_3_title_zh" lang="zh" style="display:none;">AI GC 产品</h3>
+          <p class="product-card__desc" data-key="product_3_desc">
+            Proprietary AI generative content products developed in-house, designed to empower
+            businesses with cutting-edge content generation capabilities.
+          </p>
+          <p class="product-card__desc zh" data-key="product_3_desc_zh" lang="zh" style="display:none;">
+            自主研发的 AI 生成式内容产品，旨在为企业提供领先的内容生成能力，赋能商业创新。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ CONTACT ════════ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-key="contact_label">Contact</span>
+        <h2 class="section-title" data-key="contact_title">Get In Touch</h2>
+        <h2 class="section-title zh" data-key="contact_title_zh" lang="zh" style="display:none;">联系我们</h2>
+        <div class="fusion-divider" aria-hidden="true"></div>
+      </div>
+
+      <div class="contact__grid">
+        <div class="contact__info">
+          <!-- Address -->
+          <div class="contact__item reveal reveal-delay-1">
+            <div class="contact__item-icon">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M17.5 8.75c0 5.5-7.5 10-7.5 10s-7.5-4.5-7.5-10a7.5 7.5 0 1115 0z" stroke="#D4A853" stroke-width="1.3"/>
+                <circle cx="10" cy="8.75" r="2.5" stroke="#D4A853" stroke-width="1.3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__item-label" data-key="contact_addr_label">Address</div>
+              <div class="contact__item-value" data-key="contact_addr_value">
+                KK25, 10A, Shenmao Commercial Center, No. 59 Xinwen Road, Meiling Community, Lianhua Street, Futian District, Shenzhen, Guangdong, China
+              </div>
+              <div class="contact__item-value zh" data-key="contact_addr_value_zh" lang="zh" style="display:none;">
+                深圳市福田区莲花街道梅岭社区新闻路59号深茂商业中心10A-KK25
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact__item reveal reveal-delay-2">
+            <div class="contact__item-icon">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="1.5" y="3.5" width="17" height="13" rx="2" stroke="#D4A853" stroke-width="1.3"/>
+                <path d="M1.5 5.5l8.5 5.5 8.5-5.5" stroke="#D4A853" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__item-label" data-key="contact_email_label">Email</div>
+              <div class="contact__item-value">contact@metafusion.cn</div>
+            </div>
+          </div>
+
+          <!-- Business Type -->
+          <div class="contact__item reveal reveal-delay-3">
+            <div class="contact__item-icon">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="5" width="16" height="13" rx="1.5" stroke="#D4A853" stroke-width="1.3"/>
+                <path d="M6.5 5V3.5A1.5 1.5 0 018 2h4a1.5 1.5 0 011.5 1.5V5" stroke="#D4A853" stroke-width="1.3"/>
+                <line x1="6" y1="9" x2="14" y2="9" stroke="#D4A853" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="6" y1="12" x2="11" y2="12" stroke="#D4A853" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact__item-label" data-key="contact_type_label">Business Type</div>
+              <div class="contact__item-value" data-key="contact_type_value">Limited Liability Company (有限责任公司)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Registration -->
+        <div class="contact__business reveal reveal-delay-2">
+          <div class="contact__business-title" data-key="business_title">Business Registration</div>
+          <div class="contact__business-title zh" data-key="business_title_zh" lang="zh" style="display:none;">工商注册信息</div>
+
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_fullname_label">Full Name</span>
+            <span class="contact__business-value" data-key="business_fullname_value">元融（深圳）企业管理有限公司</span>
+          </div>
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_en_name_label">English Name</span>
+            <span class="contact__business-value">Metafusion (Shenzhen) Enterprise Management Co., Ltd.</span>
+          </div>
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_credit_label">Credit Code</span>
+            <span class="contact__business-value">91440300MAE8D3RJ6A</span>
+          </div>
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_established_label">Established</span>
+            <span class="contact__business-value">2025-01-10</span>
+          </div>
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_rep_label">Legal Rep.</span>
+            <span class="contact__business-value" data-key="business_rep_value">吴毅海</span>
+          </div>
+          <div class="contact__business-row">
+            <span class="contact__business-label" data-key="business_type_label">Type</span>
+            <span class="contact__business-value" data-key="business_type_value">Limited Liability Company</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═════════════════════════════════════════════════════════
+     FOOTER
+     ═════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="14" r="10" stroke="#D4A853" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <circle cx="14" cy="14" r="6" stroke="#5BC0DE" stroke-width="1.2" fill="none" opacity="0.5"/>
+          <circle cx="14" cy="14" r="3" fill="#D4A853" opacity="0.8"/>
+        </svg>
+        <div>
+          <div class="footer__brand-name">Metafusion</div>
+          <div class="footer__brand-sub">元融（深圳）企业管理有限公司</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__divider" aria-hidden="true"></div>
+
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        <span data-key="footer_copyright">© 2025 Metafusion (Shenzhen) Enterprise Management Co., Ltd. All rights reserved.</span>
+        <span class="zh" data-key="footer_copyright_zh" lang="zh" style="display:none;">© 2025 元融（深圳）企业管理有限公司 版权所有</span>
+      </div>
+      <div class="footer__credit">
+        <span data-key="footer_credit_code">UNI Social Credit: 91440300MAE8D3RJ6A</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Translation Dictionary ── */
+  var lang = {
+    en: {
+      nav_home: 'Home',
+      nav_about: 'About',
+      nav_products: 'Products',
+      nav_contact: 'Contact',
+
+      hero_tagline: 'Element Fusion',
+      hero_title: 'Fusing Elements,<br> <span class="hero__title-em">Creating Intelligence</span>',
+      hero_title_zh: '融合元素，<br> <span class="hero__title-em">创造智能</span>',
+      hero_subtitle: 'Metafusion bridges enterprise management consulting with AI transformation, fusing foundational elements into new business intelligence.',
+      hero_cta_primary: 'Explore Our Vision',
+      hero_cta_secondary: 'Get In Touch',
+
+      scroll_label: 'Scroll',
+
+      about_label: 'About',
+      about_title: 'About Metafusion',
+      about_title_zh: '关于元融',
+      about_p1: 'Metafusion (Shenzhen) Enterprise Management Co., Ltd. is a management consulting firm undergoing a comprehensive AI transformation. We have developed our own AI GC product line, dedicated to fusing fundamental business elements with artificial intelligence to create new forms of enterprise intelligence.',
+      about_p2: 'Our name embodies the philosophy that when foundational elements come together through innovative fusion, they give rise to something greater — new intelligence, new wisdom, and new possibilities for the businesses we serve.',
+      about_p1_zh: '元融（深圳）企业管理有限公司是一家正在全面推进 AI 转型的管理咨询企业。公司已自主开发 AI GC 产品线，致力于将基础商业元素与人工智能相融合，创造全新的企业智能形态。',
+      about_p2_zh: '元融之名蕴含了这样一种理念：当基础元素通过创新融合汇聚在一起，便能创造出更伟大的事物——为我们服务的企业带来新智能、新智慧和新可能。',
+
+      info_legal_label: 'Legal Name',
+      info_legal_value: '元融（深圳）企业管理有限公司',
+      info_credit_label: 'Credit Code',
+      info_established_label: 'Established',
+      info_legal_rep_label: 'Legal Representative',
+      info_legal_rep_value: '吴毅海',
+
+      products_label: 'Services',
+      products_title: 'Products & Services',
+      products_title_zh: '产品与服务',
+
+      product_1_title: 'Management Consulting',
+      product_1_title_zh: '企业管理咨询',
+      product_1_desc: 'Professional enterprise management consulting services drawing on deep industry expertise and structured methodologies to drive organizational excellence.',
+      product_1_desc_zh: '基于深厚的行业专业知识和结构化的方法论，提供专业的企业管理咨询服务，推动组织卓越运营。',
+
+      product_2_title: 'AI Transformation',
+      product_2_title_zh: 'AI 转型方案',
+      product_2_desc: 'Comprehensive AI transformation strategies and implementation services that help organizations integrate artificial intelligence into their core operations.',
+      product_2_desc_zh: '全面的 AI 转型战略与实施服务，帮助组织将人工智能整合到核心运营中，实现业务升级。',
+
+      product_3_title: 'AI GC Products',
+      product_3_title_zh: 'AI GC 产品',
+      product_3_desc: 'Proprietary AI generative content products developed in-house, designed to empower businesses with cutting-edge content generation capabilities.',
+      product_3_desc_zh: '自主研发的 AI 生成式内容产品，旨在为企业提供领先的内容生成能力，赋能商业创新。',
+
+      contact_label: 'Contact',
+      contact_title: 'Get In Touch',
+      contact_title_zh: '联系我们',
+
+      contact_addr_label: 'Address',
+      contact_addr_value: 'KK25, 10A, Shenmao Commercial Center, No. 59 Xinwen Road, Meiling Community, Lianhua Street, Futian District, Shenzhen, Guangdong, China',
+      contact_addr_value_zh: '深圳市福田区莲花街道梅岭社区新闻路59号深茂商业中心10A-KK25',
+
+      contact_email_label: 'Email',
+      contact_type_label: 'Business Type',
+      contact_type_value: 'Limited Liability Company (有限责任公司)',
+
+      business_title: 'Business Registration',
+      business_title_zh: '工商注册信息',
+      business_fullname_label: 'Full Name',
+      business_fullname_value: '元融（深圳）企业管理有限公司',
+      business_en_name_label: 'English Name',
+      business_credit_label: 'Credit Code',
+      business_established_label: 'Established',
+      business_rep_label: 'Legal Rep.',
+      business_rep_value: '吴毅海',
+      business_type_label: 'Type',
+      business_type_value: 'Limited Liability Company',
+
+      footer_copyright: '© 2025 Metafusion (Shenzhen) Enterprise Management Co., Ltd. All rights reserved.',
+      footer_copyright_zh: '© 2025 元融（深圳）企业管理有限公司 版权所有',
+      footer_credit_code: 'UNI Social Credit: 91440300MAE8D3RJ6A'
+    },
+    zh: {
+      nav_home: '首页',
+      nav_about: '关于',
+      nav_products: '产品',
+      nav_contact: '联系',
+
+      hero_tagline: '元素融合',
+      hero_title: 'Fusing Elements,<br> <span class="hero__title-em">Creating Intelligence</span>',
+      hero_title_zh: '融合元素，<br> <span class="hero__title-em">创造智能</span>',
+      hero_subtitle: '元融连接企业管理咨询与 AI 转型，将基础元素融合为新的商业智能。',
+      hero_cta_primary: '探索我们的愿景',
+      hero_cta_secondary: '联系我们',
+
+      scroll_label: '滚动',
+
+      about_label: '关于',
+      about_title: 'About Metafusion',
+      about_title_zh: '关于元融',
+      about_p1: '元融（深圳）企业管理有限公司是一家正在全面推进 AI 转型的管理咨询企业。公司已自主开发 AI GC 产品线，致力于将基础商业元素与人工智能相融合，创造全新的企业智能形态。',
+      about_p2: '元融之名蕴含了这样一种理念：当基础元素通过创新融合汇聚在一起，便能创造出更伟大的事物——为我们服务的企业带来新智能、新智慧和新可能。',
+      about_p1_zh: '元融（深圳）企业管理有限公司是一家正在全面推进 AI 转型的管理咨询企业。公司已自主开发 AI GC 产品线，致力于将基础商业元素与人工智能相融合，创造全新的企业智能形态。',
+      about_p2_zh: '元融之名蕴含了这样一种理念：当基础元素通过创新融合汇聚在一起，便能创造出更伟大的事物——为我们服务的企业带来新智能、新智慧和新可能。',
+
+      info_legal_label: '公司名称',
+      info_legal_value: '元融（深圳）企业管理有限公司',
+      info_credit_label: '信用代码',
+      info_established_label: '成立日期',
+      info_legal_rep_label: '法定代表人',
+      info_legal_rep_value: '吴毅海',
+
+      products_label: '服务',
+      products_title: 'Products & Services',
+      products_title_zh: '产品与服务',
+
+      product_1_title: 'Management Consulting',
+      product_1_title_zh: '企业管理咨询',
+      product_1_desc: '基于深厚的行业专业知识和结构化的方法论，提供专业的企业管理咨询服务，推动组织卓越运营。',
+      product_1_desc_zh: '基于深厚的行业专业知识和结构化的方法论，提供专业的企业管理咨询服务，推动组织卓越运营。',
+
+      product_2_title: 'AI Transformation',
+      product_2_title_zh: 'AI 转型方案',
+      product_2_desc: '全面的 AI 转型战略与实施服务，帮助组织将人工智能整合到核心运营中，实现业务升级。',
+      product_2_desc_zh: '全面的 AI 转型战略与实施服务，帮助组织将人工智能整合到核心运营中，实现业务升级。',
+
+      product_3_title: 'AI GC Products',
+      product_3_title_zh: 'AI GC 产品',
+      product_3_desc: '自主研发的 AI 生成式内容产品，旨在为企业提供领先的内容生成能力，赋能商业创新。',
+      product_3_desc_zh: '自主研发的 AI 生成式内容产品，旨在为企业提供领先的内容生成能力，赋能商业创新。',
+
+      contact_label: '联系',
+      contact_title: 'Get In Touch',
+      contact_title_zh: '联系我们',
+
+      contact_addr_label: '地址',
+      contact_addr_value: 'KK25, 10A, Shenmao Commercial Center, No. 59 Xinwen Road, Meiling Community, Lianhua Street, Futian District, Shenzhen, Guangdong, China',
+      contact_addr_value_zh: '深圳市福田区莲花街道梅岭社区新闻路59号深茂商业中心10A-KK25',
+
+      contact_email_label: '邮箱',
+      contact_type_label: '企业类型',
+      contact_type_value: '有限责任公司',
+
+      business_title: 'Business Registration',
+      business_title_zh: '工商注册信息',
+      business_fullname_label: '公司全称',
+      business_fullname_value: '元融（深圳）企业管理有限公司',
+      business_en_name_label: '英文名称',
+      business_credit_label: '信用代码',
+      business_established_label: '成立日期',
+      business_rep_label: '法定代表人',
+      business_rep_value: '吴毅海',
+      business_type_label: '企业类型',
+      business_type_value: '有限责任公司',
+
+      footer_copyright: '© 2025 Metafusion (Shenzhen) Enterprise Management Co., Ltd. All rights reserved.',
+      footer_copyright_zh: '© 2025 元融（深圳）企业管理有限公司 版权所有',
+      footer_credit_code: '统一社会信用代码：91440300MAE8D3RJ6A'
+    }
+  };
+
+  var currentLang = 'en';
+  var isMobileOpen = false;
+
+  /* ── DOM refs ── */
+  var langBtns = document.querySelectorAll('.nav__lang-btn, .nav__mobile-lang-btn');
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  var mobileLinks = mobileNav.querySelectorAll('.nav__mobile-link');
+  var nav = document.getElementById('nav');
+
+  /* ── Switch Language ── */
+  function setLanguage(langCode) {
+    currentLang = langCode;
+    var dict = lang[langCode];
+    var isZh = langCode === 'zh';
+
+    // Update all [data-key] elements
+    var els = document.querySelectorAll('[data-key]');
+    els.forEach(function(el) {
+      var key = el.getAttribute('data-key');
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    // Show/hide Chinese-specific elements
+    document.querySelectorAll('.zh, [lang="zh"]').forEach(function(el) {
+      el.style.display = (isZh && el.classList.contains('zh')) || (isZh && el.getAttribute('lang') === 'zh') ? '' : 'none';
+    });
+
+    // Update lang btn states
+    langBtns.forEach(function(btn) {
+      var isActive = btn.getAttribute('data-lang') === langCode;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = langCode;
+
+    // Update logo sub text
+    var logoSub = document.querySelector('.nav__logo-sub');
+    if (logoSub) {
+      logoSub.textContent = isZh ? '元 融' : '';
+    }
+  }
+
+  /* ── Language button clicks ── */
+  langBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var langCode = this.getAttribute('data-lang');
+      if (langCode !== currentLang) {
+        setLanguage(langCode);
+        // Close mobile menu if open
+        closeMobile();
+      }
+    });
+  });
+
+  /* ── Hamburger ── */
+  function toggleMobile() {
+    isMobileOpen = !isMobileOpen;
+    hamburger.classList.toggle('open', isMobileOpen);
+    mobileNav.classList.toggle('open', isMobileOpen);
+    hamburger.setAttribute('aria-expanded', isMobileOpen ? 'true' : 'false');
+    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
+  }
+
+  function closeMobile() {
+    isMobileOpen = false;
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', toggleMobile);
+
+  mobileLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      closeMobile();
+    });
+  });
+
+  /* ── Active nav link on scroll ── */
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav__link');
+
+  function updateActiveNav() {
+    var scrollY = window.scrollY + 100;
+
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+
+      if (scrollY >= top && scrollY < top + height) {
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+        mobileLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  /* ── Nav shadow on scroll ── */
+  function updateNavShadow() {
+    if (window.scrollY > 20) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  /* ── Scroll listener ── */
+  var scrollTimer;
+  window.addEventListener('scroll', function() {
+    cancelAnimationFrame(scrollTimer);
+    scrollTimer = requestAnimationFrame(function() {
+      updateActiveNav();
+      updateNavShadow();
+    });
+  }, { passive: true });
+
+  /* ── Intersection Observer for reveal animations ── */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: show all reveals immediately
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* ── Initialise: default EN ── */
+  setLanguage('en');
+  updateNavShadow();
+
+})();
+</script>
+</body>
+</html>
